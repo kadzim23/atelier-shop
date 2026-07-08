@@ -1,0 +1,13 @@
+{
+  "name": "atelier-ecommerce",
+  "version": "1.0.0",
+  "description": "Toko fashion ATELIER — Full Stack E-Commerce",
+  "scripts": {
+    "install": "cd backend && npm install",
+    "start": "cd backend && node server.js",
+    "dev": "cd backend && node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

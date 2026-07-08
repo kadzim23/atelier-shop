@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATELIER — Fashion Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu kategori">☰</button>
+    <a href="/" class="logo">ATELIER</a>
+    <nav class="main-nav" id="mainNav">
+      <button class="nav-link" data-category="all">Semua</button>
+      <button class="nav-link" data-category="Outerwear">Outerwear</button>
+      <button class="nav-link" data-category="Tops">Tops</button>
+      <button class="nav-link" data-category="Bottoms">Bottoms</button>
+      <button class="nav-link" data-category="Dresses">Dresses</button>
+      <button class="nav-link" data-category="Accessories">Accessories</button>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="searchToggle" aria-label="Cari produk">⚲</button>
+      <button class="icon-btn" id="trackBtn" aria-label="Lacak pesanan">⊙</button>
+      <button class="icon-btn cart-btn" id="cartToggle" aria-label="Buka keranjang">
+        ⊕ <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+  <div class="search-bar" id="searchBar">
+    <input type="text" id="searchInput" placeholder="Cari produk… misal: coat, denim, linen">
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">Koleksi Musim Ini</p>
+    <h1>Pakaian yang<br><em>bertahan lama,</em><br>bukan sekadar musim.</h1>
+    <p class="hero-sub">Dibuat dari material premium, dijahit untuk dipakai bertahun-tahun. Setiap koleksi diberi nomor — bukan dekorasi, tapi identitas.</p>
+    <button class="btn-primary" id="shopNowBtn">Lihat Koleksi ↓</button>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <span class="hero-label">No. 0001</span>
+      <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=900" alt="Wol Coat Charcoal — produk unggulan koleksi musim ini">
+    </div>
+  </div>
+</section>
+
+<main class="catalog-section" id="catalogSection">
+  <div class="catalog-header">
+    <h2 id="catalogTitle">Semua Produk</h2>
+    <p class="catalog-count" id="catalogCount"></p>
+  </div>
+  <div class="product-grid" id="productGrid">
+    <!-- products injected by JS -->
+  </div>
+  <div class="empty-state" id="emptyState" hidden>
+    <p>Tidak ada produk yang cocok.</p>
+    <p class="empty-sub">Coba kata kunci lain atau lihat semua kategori.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="logo">ATELIER</p>
+      <p>Fashion studio independen. Dibuat dengan teliti, dipakai dengan bangga.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Bantuan</p>
+      <button class="footer-link" id="footerTrackBtn">Lacak Pesanan</button>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Lainnya</p>
+      <a href="/admin.html" class="footer-link">Admin</a>
+    </div>
+  </div>
+  <p class="footer-bottom">© 2026 ATELIER. Dibuat sebagai showcase e-commerce pribadi.</p>
+</footer>
+
+<!-- Product Detail Modal -->
+<div class="modal-overlay" id="productModalOverlay" hidden>
+  <div class="modal product-modal" id="productModal"></div>
+</div>
+
+<!-- Cart Drawer -->
+<div class="drawer-overlay" id="cartOverlay" hidden></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="drawer-header">
+    <h3>Keranjang Anda</h3>
+    <button class="icon-btn" id="closeCart" aria-label="Tutup keranjang">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter">
+    <div class="cart-summary">
+      <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">Rp 0</span></div>
+      <div class="summary-row"><span>Ongkir</span><span id="cartShipping">Rp 0</span></div>
+      <div class="summary-row total"><span>Total</span><span id="cartTotal">Rp 0</span></div>
+    </div>
+    <button class="btn-primary full-width" id="checkoutBtn">Lanjut ke Pembayaran</button>
+  </div>
+</aside>
+
+<!-- Checkout Modal -->
+<div class="modal-overlay" id="checkoutOverlay" hidden>
+  <div class="modal checkout-modal" id="checkoutModal"></div>
+</div>
+
+<!-- Order Track Modal -->
+<div class="modal-overlay" id="trackOverlay" hidden>
+  <div class="modal track-modal">
+    <button class="modal-close" id="closeTrack">✕</button>
+    <h3>Lacak Pesanan</h3>
+    <p class="modal-sub">Masukkan nomor pesanan yang dikirim ke email Anda.</p>
+    <input type="text" id="trackOrderNumber" placeholder="contoh: ATL-20260629-1234">
+    <button class="btn-primary full-width" id="trackSubmit">Lacak</button>
+    <div id="trackResult"></div>
+  </div>
+</div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
+
+<script src="js/api.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
