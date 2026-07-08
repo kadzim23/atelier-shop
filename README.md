@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ATELIER — Full Stack Fashion E-Commerce
 
 Toko fashion personal built with **Node.js + Express + SQLite** (backend) dan **HTML/CSS/JS vanilla** (frontend).
@@ -122,3 +123,6 @@ Brand **ATELIER** — fashion studio minimalis premium.
 - Warna: Hitam pekat, Krem hangat, Gold muted, Cokelat tanah
 - Font: Cormorant Garamond (display) + Inter (body)
 - Responsive untuk mobile dan desktop
+=======
+# atelier-shop
+>>>>>>> 54e32ab6ba8a368c069e0cbf56546ab344caf392
